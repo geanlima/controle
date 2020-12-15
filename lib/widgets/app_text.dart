@@ -1,4 +1,6 @@
+import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class AppText extends StatelessWidget {
 
@@ -10,6 +12,7 @@ class AppText extends StatelessWidget {
     this.validator,
     this.keyboardType,
     this.textInputAction,
+    this.inputFormatters,
   });
 
   String label;
@@ -19,6 +22,7 @@ class AppText extends StatelessWidget {
   FormFieldValidator<String> validator;
   TextInputType keyboardType;
   TextInputAction textInputAction;
+  List<TextInputFormatter> inputFormatters;
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +32,7 @@ class AppText extends StatelessWidget {
       validator: validator,
       keyboardType: keyboardType,
       textInputAction: textInputAction,
+      inputFormatters : inputFormatters,
       style: TextStyle(
         fontSize: 16,
       ),

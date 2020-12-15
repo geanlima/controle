@@ -1,3 +1,6 @@
+import 'package:controle/pages/home_page.dart';
+import 'package:controle/pages/pessoa_page.dart';
+import 'package:controle/utils/nav.dart';
 import 'package:controle/widgets/app_button.dart';
 import 'package:controle/widgets/app_text.dart';
 import 'package:flutter/cupertino.dart';
@@ -42,21 +45,24 @@ class _LoginPageState extends State<LoginPage> {
                 textInputAction: TextInputAction.next,
               ),
               SizedBox(height: 10),
-              AppText(
-                "Senha",
-                "Digite a Senha",
-                password: true,
-                controller: _tSenha,
-                validator: _validateSenha,
-                keyboardType: TextInputType.number
-              ),
+              AppText("Senha", "Digite a Senha",
+                  password: true,
+                  controller: _tSenha,
+                  validator: _validateSenha,
+                  keyboardType: TextInputType.number),
               SizedBox(height: 20),
-              AppButton("Login", onPressed: _onClickLogin),
+              AppButton("Login", "RaisedButton", _onClickLogin, showProgress: false),
+              SizedBox(height: 15),
+              AppButton("Registrar?", "Hiperlink", _onClickRegistrar, showProgress: false,),
             ],
           ),
         ),
       ),
     );
+  }
+
+  void _onClickRegistrar() {
+    push(context, PessoaPage());
   }
 
   void _onClickLogin() {
@@ -68,6 +74,8 @@ class _LoginPageState extends State<LoginPage> {
 
     String login = _tLogin.text;
     String senha = _tSenha.text;
+
+    push(context, HomePage());
 
     print("Login $login Senha $senha");
   }
